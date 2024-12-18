@@ -87,7 +87,7 @@ class WeekCleaning:
         schedule += dedent(
             f"""
 
-            Zie https://yochem.nl/weektaak/ voor het hele schema"""
+            Zie https://omhp.nl/weektaak/ voor het hele schema"""
         )
 
         return schedule
@@ -155,7 +155,8 @@ def person_index(schedule: Schedule) -> dict[str, Schedule]:
 
     for week in schedule:
         for person in week:
-            index[person] = index.get(person, []) + [week]
+            if person:
+                index[person] = index.get(person, []) + [week]
 
     return index
 
