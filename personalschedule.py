@@ -62,7 +62,8 @@ class WeekCleaning:
 
     def __str__(self) -> str:
         """Return string representation of this week's cleaning."""
-        schedule = dedent(f"""
+        schedule = dedent(
+            f"""
             Keuken 🍳
             - {self.kitchen[0]}
             - {self.kitchen[1]}
@@ -72,19 +73,25 @@ class WeekCleaning:
             - {self.toilets}
 
             Douches 🚿
-            - {self.showers}""")
+            - {self.showers}"""
+        )
 
-        if self.upstairs != '':
-            schedule += dedent(f"""
+        if self.upstairs != "":
+            schedule += dedent(
+                f"""
 
                 Badkamer boven 🔝
-                - {self.upstairs}""")
+                - {self.upstairs}"""
+            )
 
-        schedule += dedent(f"""
+        schedule += dedent(
+            f"""
 
-            Zie https://yochem.nl/weektaak/ voor het hele schema""")
+            Zie https://yochem.nl/weektaak/ voor het hele schema"""
+        )
 
         return schedule
+
 
 Schedule = list[WeekCleaning]
 
@@ -113,7 +120,7 @@ def csv2schedule(csv_file: Pathable) -> Schedule:
             )]
     """
     data_path = Path(csv_file)
-    lines = base64.b32decode(data_path.read_text()).decode('utf-8').splitlines()
+    lines = base64.b32decode(data_path.read_text()).decode("utf-8").splitlines()
 
     # split and remove lines with empty fields
     weeks = [str(line).split(",") for line in lines[1:]]
@@ -288,8 +295,8 @@ def cli(cfg: dict[str, str]) -> None:
 
 if __name__ == "__main__":
     config = {
-        "ics_filename_format": "public/cal/{}.ics",
+        "ics_filename_format": "public/weektaak/cal/{}.ics",
         "data_path": "data",
-        "admin": "public/cal/admin.ics",
+        "admin": "public/weektaak/cal/admin.ics",
     }
     cli(config)

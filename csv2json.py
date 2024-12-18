@@ -7,6 +7,8 @@ from pathlib import Path
 
 
 def csv_to_json(csv_file_path, json_file_path):
+    csv_file = Path(csv_file_path)
+    json_file = Path(json_file_path)
     data = {}
     keys = (
         "kitchen-1",
@@ -17,8 +19,7 @@ def csv_to_json(csv_file_path, json_file_path):
         "upstairs",
     )
 
-
-    lines = base64.b32decode(Path(csv_file_path).read_text()).decode('utf-8').splitlines()
+    lines = base64.b32decode(csv_file.read_text()).decode("utf-8").splitlines()
     csv_reader = csv.reader(lines)
 
     # skip header line
@@ -31,13 +32,16 @@ def csv_to_json(csv_file_path, json_file_path):
         start_date = datetime.strptime(start, "%d-%m-%Y").date().isoformat()
         data[start_date] = dict(zip(keys, tasks))
 
-    Path(json_file_path).write_text(json.dumps(
-        data,
-        separators=(",", ":"),
-    ))
+    json_file.parent.mkdir(exist_ok=True, parents=True)
+    json_file.write_text(
+        json.dumps(
+            data,
+            separators=(",", ":"),
+        )
+    )
 
 
 if __name__ == "__main__":
     csv_file_path = "data"
-    json_file_path = "public/tasks.json"
+    json_file_path = "public/weektaak/tasks.json"
     csv_to_json(csv_file_path, json_file_path)
