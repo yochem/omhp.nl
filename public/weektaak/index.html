@@ -1,46 +1,53 @@
 <!doctype html>
 <html lang="nl">
-  <head>
-    <title>Weektaken OMHP</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <meta name="robots" content="noindex" />
-    <script src="script.js" defer></script>
-  </head>
-  <body>
-    <header>
-      <h1><a href="index.html">Weektaak OMHP</a></h1>
-      <nav>
-        <a id="prevWeek" class="navButton">&#8249;</a>
-        <p id="weeknumber"></p>
-        <a id="nextWeek" class="navButton">&#8250;</a>
-      </nav>
-    </header>
 
-    <main>
-      <section>
-        <h2>Keuken</h2>
-        <p id="kitchen"></p>
-      </section>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Weektaken OMHP</title>
+	<meta name="description" content="Overzicht van weektaken voor OMHP">
+	<meta name="robots" content="noindex">
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon"
+		href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🧽%3C/text%3E%3C/svg%3E">
+	<script src="script.js" defer></script>
+</head>
 
-      <section>
-        <h2>Wc's</h2>
-        <p id="toilet"></p>
-      </section>
+<body>
+	<header>
+		<h1><a href="index.html">Weektaak OMHP</a></h1>
+		<nav>
+			<button id="prevWeek" class="navButton" aria-label="Vorige week">&#8249;</button>
+			<p id="weeknumber"></p>
+			<button id="nextWeek" class="navButton" aria-label="Volgende week">&#8250;</button>
+		</nav>
+	</header>
 
-      <section>
-        <h2>Douches</h2>
-        <p id="shower"></p>
-      </section>
+	<main>
+		<section>
+			<h2>Keuken</h2>
+			<p id="kitchen"></p>
+		</section>
 
-      <section>
-        <h2>Badkamer boven</h2>
-        <p id="upstairs"></p>
-      </section>
-    </main>
+		<section>
+			<h2>Wc's</h2>
+			<p id="toilet"></p>
+		</section>
 
-    <footer>
-      <a href="persoonlijk.html">Bekijk jouw persoonlijke weektaken</a>
-    </footer>
-  </body>
+		<section>
+			<h2>Douches</h2>
+			<p id="shower"></p>
+		</section>
+
+		<section>
+			<h2>Badkamer boven</h2>
+			<p id="upstairs"></p>
+		</section>
+	</main>
+
+	<footer>
+		<a href="persoonlijk.html">Bekijk jouw persoonlijke weektaken</a>
+	</footer>
+</body>
+
 </html>

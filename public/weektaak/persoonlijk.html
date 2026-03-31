@@ -1,37 +1,43 @@
 <!doctype html>
 <html lang="nl">
-  <head>
-    <title>Weektaken OMHP</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="favicon.ico" />
-    <meta name="robots" content="noindex" />
-    <script src="script.js"></script>
-  </head>
 
-  <body>
-    <header>
-      <h1><a href="index.html">Weektaken</a></h1>
-    </header>
-    <main>
-      <p>
-        van
-        <select id="names">
-          <option disabled selected>Kies een naam</option>
-        </select>
-      </p>
-      <table id="table">
-        <thead>
-          <tr>
-            <th>Weeknr</th>
-            <th>Maandag</th>
-            <th>Taak</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </main>
-    <footer>
-      <a href="#" id="icslink">Exporteer naar agenda</a>
-    </footer>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weektaken OMHP</title>
+  <meta name="description" content="Persoonlijk overzicht van weektaken voor OMHP">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🧽%3C/text%3E%3C/svg%3E">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1><a href="index.html">Weektaken</a></h1>
+  </header>
+  <main>
+    <p>
+      van
+      <select id="names">
+        <option disabled selected>Kies een naam</option>
+      </select>
+    </p>
+    <table id="table">
+      <thead>
+        <tr>
+          <th scope="col">Weeknr</th>
+          <th scope="col">Maandag</th>
+          <th scope="col">Taak</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
+  <footer>
+    <a href="#" id="icslink">Exporteer naar agenda</a>
+  </footer>
+</body>
+
 </html>
