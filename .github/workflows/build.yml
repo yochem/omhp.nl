@@ -1,10 +1,8 @@
-name: Build website
+name: Deploy static content to Pages
 
 on:
   push:
-    branches:
-      - main
-
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -14,6 +12,7 @@ permissions:
 
 concurrency:
   group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -37,6 +36,11 @@ jobs:
       - name: Convert csv data to json
         run: uv run src/csv2json.py
 
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
   deploy:
     environment:
       name: github-pages
@@ -44,14 +48,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './public'
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
