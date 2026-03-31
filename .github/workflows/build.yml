@@ -15,30 +15,27 @@ permissions:
 concurrency:
   group: "pages"
 
-defaults:
-  run:
-    shell: bash
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Set up Python
+        run: uv python install
+
+      - name: Install deps
+        run: uv sync --locked
+
       - name: Generate personal .ics files
-        run: pip install ics && python3 personalschedule.py
+        run: uv run src/personalschedule.py
+
       - name: Convert csv data to json
-        run: python3 csv2json.py
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
+        run: uv run src/csv2json.py
 
   deploy:
     environment:
@@ -47,6 +44,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public'
+
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

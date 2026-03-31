@@ -85,9 +85,9 @@ class WeekCleaning:
             )
 
         schedule += dedent(
-            f"""
+            """
 
-            Zie https://omhp.nl/weektaak/ voor het hele schema"""
+            Zie https://omhp.nl/weektaak/ voor het hele schema of om jouw persoonlijke schema in je agenda te importeren."""
         )
 
         return schedule
